@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Sensitive Data Exposure (A3) : Transmitting the revenue data over insecure channels (using HTTP instead of HTTPS).Storing the revenue data in an improperly secured database. Allowing unrestricted access to the revenue data.
 const merchantSchema = new mongoose.Schema({
   latitude: {
     type: Number,
@@ -17,6 +18,11 @@ const merchantSchema = new mongoose.Schema({
   merchantName: {
     type: String,
     required: [true, "Please enter the merchant's Name"]
+  },
+
+  revenue: {
+    type: Number,
+    required: [true, "Please enter the merchant's annual revenue"]
   },
 
 });

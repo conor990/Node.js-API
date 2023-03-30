@@ -43,7 +43,7 @@ app.get('/merchants/:merchantId', async(req, res)=>{
 })
 
 
-//creates the merchants
+//creates the merchants     //injection A1 : injection vulnerability in your endpoints by not validating or sanitizing user inputs.
 app.post('/merchants', async(req, res)=>{
     try{
         const merchant = await merchantModel.create(req.body)
@@ -53,10 +53,9 @@ app.post('/merchants', async(req, res)=>{
         console.log(error.message)
     }
 })
+//Cross-Site Scripting (XSS) (A7): Although XSS vulnerabilities are more common in web applications, you could still introduce a vulnerability by returning user-generated content without proper validation, sanitization, or encoding.
 
-
-//update merchants
-
+//update merchants   / Broken Access Control (A5)
 app.put('/merchants/:merchantId', async (req, res) => {
     try {
       const { merchantId } = req.params;
